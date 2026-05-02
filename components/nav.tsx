@@ -117,14 +117,6 @@ export function Nav() {
               </kbd>
             </button>
 
-            <span
-              aria-hidden
-              className="hidden lg:inline-flex h-6 items-center gap-1.5 rounded-full border border-line-soft bg-canvas/70 px-2.5 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-ink-muted"
-            >
-              <span className="size-1 rounded-full bg-emerald-500" />
-              Open · Q3 2026
-            </span>
-
             <Link
               href="/contact"
               className="group inline-flex h-9 items-center gap-1.5 rounded-full bg-ink pl-4 pr-3 text-[0.8125rem] font-medium text-canvas transition-all hover:bg-ink-soft hover:gap-2 active:scale-[0.97]"
