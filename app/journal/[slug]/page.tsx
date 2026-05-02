@@ -94,6 +94,121 @@ const articles: Record<string, Article> = {
       },
     ],
   },
+
+  ceilings: {
+    title: "Ceilings",
+    dek:
+      "Why we named the studio osmon — the Uzbek word for sky — and what we mean when we say the ceiling is what matters.",
+    date: "2026-01-08",
+    read: "5 min",
+    topic: "Studio",
+    body: [
+      {
+        kind: "p",
+        text:
+          "Naming things is the part of starting a studio nobody warns you about. We had a list of forty-seven words pinned to a wall in Tashkent for a month before it became obvious which one was right. The list had a lot of obvious candidates — verbs about building, verbs about acceleration, verbs about the future. We crossed all of them off, eventually, because they were saying the same thing in slightly different fonts.",
+      },
+      {
+        kind: "p",
+        text:
+          "Then somebody wrote <code>osmon</code> in the corner of the wall. It stayed.",
+      },
+      { kind: "h2", text: "What the word names" },
+      {
+        kind: "p",
+        text:
+          "Osmon is the Uzbek word for sky. It comes from Persian, the way most words do in this part of the world. We chose it for the absence of a thing — a sky has no ceiling. We work in a field where almost everything else does.",
+      },
+      {
+        kind: "p",
+        text:
+          "This is meant to read as romantic, and it isn&rsquo;t. The point isn&rsquo;t aspiration. It&rsquo;s an honest observation about the constraint we&rsquo;re trying to disappear.",
+      },
+      { kind: "h2", text: "Where ceilings come from" },
+      {
+        kind: "p",
+        text:
+          "Most software systems we look at are running into one of three ceilings, often more than one at the same time.",
+      },
+      {
+        kind: "p",
+        text:
+          "The first is the <strong>model ceiling</strong> — what the underlying language model can actually do, accurately, on the task in front of it. This ceiling moves. A capability that wasn&rsquo;t there in March is reliable by September. Building against it is a moving target by definition, and most of the engineering practice is dealing with the fact that the ceiling shifts mid-project.",
+      },
+      {
+        kind: "p",
+        text:
+          "The second is the <strong>team ceiling</strong> — what the people writing the code have already done. This one barely moves at all. A team that hasn&rsquo;t shipped an evaluation suite under real load won&rsquo;t ship one because they read about evals. They have to ship one, fail with it, ship the next, and the third one will be the one that works. Reading about ceilings doesn&rsquo;t lower them.",
+      },
+      {
+        kind: "p",
+        text:
+          "The third is the <strong>organizational ceiling</strong> — what the surrounding company will actually let you do. Procurement wants a SOC 2 attestation. Legal wants the agent unable to mention a competitor. Sales wants to demo it Wednesday. The organizational ceiling is invisible until you press on it; then it&rsquo;s the only thing that matters, and it usually matters more than the other two combined.",
+      },
+      {
+        kind: "quote",
+        text:
+          "A team that builds without naming the ceiling they&rsquo;re working under is a team that ships into one and is surprised.",
+      },
+      { kind: "h2", text: "The discipline" },
+      {
+        kind: "p",
+        text:
+          "Most of what we do at osmon, day to day, is ceiling identification. We sit down with a team that wants an agent. We ask them which of the three is closest. Almost nobody knows. They&rsquo;ve been arguing about a feature when they should have been arguing about a constraint.",
+      },
+      {
+        kind: "p",
+        text:
+          "If the model ceiling is closest, the right move is usually to wait six weeks and ship into the next capability. We say this even though it costs us a project. If the team ceiling is closest, the right move is to ship something deliberately small enough that the team learns the discipline before the surface area grows. We say this even though smaller projects pay less. If the organizational ceiling is closest, you&rsquo;re not building software yet — you&rsquo;re negotiating, and pretending it&rsquo;s a build is dishonest. We say this and almost always lose the room.",
+      },
+      {
+        kind: "p",
+        text:
+          "We&rsquo;ve gotten better at saying it earlier. The first call goes much faster than it used to.",
+      },
+      { kind: "h2", text: "What ceiling-aware work looks like" },
+      {
+        kind: "p",
+        text:
+          "Three habits show up in every engagement.",
+      },
+      {
+        kind: "ul",
+        items: [
+          "Naming. The first paragraph of every internal doc names which ceiling we&rsquo;re working under. It changes through the project; we update it. The doc is incoherent without it.",
+          "Asymmetric pessimism. We assume the model ceiling will rise faster than expected and the organizational ceiling will fall slower. This biases us against clever, model-dependent designs and toward designs that work even when the model gets stronger or the lawyers get nervous.",
+          "Refusal to deliver across a ceiling we haven&rsquo;t named. If we&rsquo;re shipping something we know will hit an organizational wall in three months, we say so on day one. We&rsquo;ve lost work this way. We&rsquo;ve avoided most of the project disasters our peers tell us about over drinks.",
+        ],
+      },
+      { kind: "h2", text: "Why a sky" },
+      {
+        kind: "p",
+        text:
+          "The reason we named the studio osmon, then, is that the word names what we&rsquo;re trying to do more honestly than anything else we tried.",
+      },
+      {
+        kind: "p",
+        text:
+          "A studio called Velocity would be lying — we slow some teams down on purpose. A studio called Frontier would be lying — most of what we ship has been done before, just not by this team. A studio called Reliable would be lying — agents fail, and we plan for it.",
+      },
+      {
+        kind: "quote",
+        text:
+          "A sky is the thing above the ceilings.",
+      },
+      {
+        kind: "p",
+        text:
+          "When we do our job, the ceilings stop mattering for a while. The team can see further than it could yesterday. That&rsquo;s the only thing we promise; it turns out to be enough.",
+      },
+      { kind: "h2", text: "Closing" },
+      {
+        kind: "p",
+        text:
+          "We are eight engineers, five in Tashkent and three across Europe and North America. We work on small projects. We turn down most of the work we&rsquo;re offered, not because we&rsquo;re picky, but because most of it is a fight with the wrong ceiling. When that&rsquo;s the case, we say so on the first call, recommend somebody better suited to the fight, and wait for the work that&rsquo;s actually about a sky.",
+      },
+    ],
+  },
 };
 
 export async function generateMetadata({
