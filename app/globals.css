@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@theme {
+  --color-canvas: #ffffff;
+  --color-ink: #0b0f14;
+  --color-ink-soft: #2f3437;
+  --color-ink-muted: #6b7280;
+  --color-line: #eaeaea;
+  --color-line-soft: rgba(11, 15, 20, 0.06);
+  --color-sky: #56b6fc;
+  --color-sky-deep: #1f6c9f;
+  --color-sky-pale: #e1f3fe;
+  --color-bone: #f7f6f3;
+
+  --font-sans:
+    var(--font-geist-sans), "SF Pro Display", "Helvetica Neue", system-ui,
+    sans-serif;
+  --font-serif:
+    var(--font-newsreader), "Newsreader", "Lyon Text", Georgia, serif;
+  --font-mono:
+    var(--font-geist-mono), "SF Mono", "JetBrains Mono", ui-monospace, monospace;
+
+  --container-narrow: 64rem;
+  --container-wide: 80rem;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    border-color: var(--color-line);
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    background: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+
+  body {
+    font-feature-settings: "ss01", "cv11";
+    line-height: 1.6;
+  }
+
+  ::selection {
+    background: var(--color-sky-pale);
+    color: var(--color-sky-deep);
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--color-sky);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@utility text-pretty {
+  text-wrap: pretty;
+}
+
+@keyframes osmon-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes osmon-drift {
+  0%,
+  100% {
+    transform: translate3d(-8%, -4%, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(6%, 5%, 0) scale(1.06);
+  }
+}
+
+.osmon-rise {
+  opacity: 0;
+  transform: translate3d(0, 12px, 0);
+  will-change: transform, opacity;
+}
+
+.osmon-rise[data-visible="true"] {
+  animation: osmon-rise 700ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: var(--rise-delay, 0ms);
+}
+
+.osmon-drift {
+  animation: osmon-drift 28s ease-in-out infinite;
+  will-change: transform;
+}
+
+.osmon-grid {
+  background-image:
+    linear-gradient(to right, var(--color-line-soft) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-line-soft) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
