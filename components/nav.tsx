@@ -2,9 +2,9 @@ import Link from "next/link";
 import { Wordmark } from "@/components/wordmark";
 
 const links = [
-  { href: "#work", label: "Work" },
-  { href: "#capabilities", label: "Capabilities" },
-  { href: "#contact", label: "Contact" },
+  { href: "/work", label: "Work" },
+  { href: "/about", label: "About" },
+  { href: "/journal", label: "Journal" },
 ];
 
 export function Nav() {
@@ -20,21 +20,21 @@ export function Nav() {
         </Link>
         <nav className="hidden md:flex items-center gap-10 text-[0.875rem] text-ink-muted">
           {links.map((l) => (
-            <a
+            <Link
               key={l.href}
               href={l.href}
               className="transition-colors hover:text-ink"
             >
               {l.label}
-            </a>
+            </Link>
           ))}
         </nav>
-        <a
-          href="mailto:hello@osmon.io"
+        <Link
+          href="/contact"
           className="inline-flex h-9 items-center rounded-md bg-ink px-4 text-[0.8125rem] font-medium text-canvas transition-colors hover:bg-ink-soft active:scale-[0.98]"
         >
           Talk to us
-        </a>
+        </Link>
       </div>
     </header>
   );
