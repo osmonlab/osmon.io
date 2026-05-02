@@ -9,3 +9,7 @@ out
 .turbo
 next-env.d.ts
 *.tsbuildinfo
+.open-next
+.wrangler
+.dev.vars
+cloudflare-env.d.ts
