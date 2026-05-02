@@ -1,5 +1,11 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 import { Wordmark } from "@/components/wordmark";
+import { cn } from "@/lib/cn";
 
 const links = [
   { href: "/work", label: "Work" },
@@ -7,34 +13,91 @@ const links = [
   { href: "/journal", label: "Journal" },
 ];
 
+function isActive(pathname: string, href: string) {
+  if (href === "/") return pathname === "/";
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
 export function Nav() {
+  const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="fixed inset-x-0 top-0 z-40 border-b border-line-soft bg-canvas/75 backdrop-blur-md backdrop-saturate-150">
-      <div className="mx-auto flex h-16 max-w-(--container-wide) items-center justify-between px-6 md:px-10">
+    <header
+      className={cn(
+        "fixed inset-x-0 top-0 z-40 transition-[padding,background-color,border-color,box-shadow] duration-300",
+        scrolled ? "py-2" : "py-4",
+      )}
+    >
+      <div
+        className={cn(
+          "mx-auto flex h-14 max-w-(--container-wide) items-center justify-between gap-6 rounded-full border px-3 pl-5 transition-all duration-300",
+          scrolled
+            ? "border-line bg-canvas/80 shadow-[0_1px_0_rgba(11,15,20,0.04),0_8px_24px_-12px_rgba(11,15,20,0.08)] backdrop-blur-xl"
+            : "border-transparent bg-canvas/40 backdrop-blur-md",
+        )}
+      >
         <Link
           href="/"
           aria-label="osmon — home"
-          className="text-[1.15rem] tracking-[-0.04em] font-medium text-ink"
+          className="group flex items-center gap-2.5"
         >
-          <Wordmark />
+          <span aria-hidden className="relative inline-flex">
+            <span className="block size-1.5 rounded-full bg-sky" />
+            <span className="absolute inset-0 inline-flex animate-ping rounded-full bg-sky opacity-60" />
+          </span>
+          <Wordmark className="text-[1.0625rem] text-ink transition-colors group-hover:text-ink/80" />
         </Link>
-        <nav className="hidden md:flex items-center gap-10 text-[0.875rem] text-ink-muted">
-          {links.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className="transition-colors hover:text-ink"
-            >
-              {l.label}
-            </Link>
-          ))}
+
+        <nav
+          aria-label="Primary"
+          className="hidden md:flex items-center gap-1 rounded-full border border-line-soft bg-bone/60 p-1 backdrop-blur"
+        >
+          {links.map((l) => {
+            const active = isActive(pathname, l.href);
+            return (
+              <Link
+                key={l.href}
+                href={l.href}
+                aria-current={active ? "page" : undefined}
+                className={cn(
+                  "relative rounded-full px-4 py-1.5 text-[0.8125rem] font-medium transition-colors",
+                  active
+                    ? "bg-canvas text-ink shadow-[0_1px_0_rgba(11,15,20,0.04),0_2px_8px_-3px_rgba(11,15,20,0.08)]"
+                    : "text-ink-muted hover:text-ink",
+                )}
+              >
+                {l.label}
+              </Link>
+            );
+          })}
         </nav>
-        <Link
-          href="/contact"
-          className="inline-flex h-9 items-center rounded-md bg-ink px-4 text-[0.8125rem] font-medium text-canvas transition-colors hover:bg-ink-soft active:scale-[0.98]"
-        >
-          Talk to us
-        </Link>
+
+        <div className="flex items-center gap-2">
+          <span
+            aria-hidden
+            className="hidden lg:inline-flex h-6 items-center gap-1.5 rounded-full border border-line-soft bg-canvas/70 px-2.5 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-ink-muted"
+          >
+            <span className="size-1 rounded-full bg-emerald-500" />
+            Open · Q3 2026
+          </span>
+          <Link
+            href="/contact"
+            className="group inline-flex h-9 items-center gap-1.5 rounded-full bg-ink pl-4 pr-3 text-[0.8125rem] font-medium text-canvas transition-all hover:bg-ink-soft hover:gap-2 active:scale-[0.97]"
+          >
+            Talk to us
+            <span className="inline-flex size-6 items-center justify-center rounded-full bg-canvas/12 transition-colors group-hover:bg-canvas/20">
+              <ArrowUpRight size={12} weight="bold" />
+            </span>
+          </Link>
+        </div>
       </div>
     </header>
   );
