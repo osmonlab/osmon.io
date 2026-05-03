@@ -19,7 +19,7 @@ export default function OG() {
           padding: 80,
           fontFamily: "system-ui, -apple-system, Helvetica",
           backgroundImage:
-            "radial-gradient(ellipse 60% 40% at 80% 0%, rgba(86,182,252,0.18), transparent 60%)",
+            "radial-gradient(ellipse 60% 40% at 80% 0%, rgba(61,168,255,0.18), transparent 60%)",
         }}
       >
         <div

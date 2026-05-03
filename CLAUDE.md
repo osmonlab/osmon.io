@@ -34,7 +34,7 @@ bun run cf:typegen       # regenerate cloudflare-env.d.ts from wrangler bindings
 
 ## Design rules (do not bend)
 
-- **Color #56B6FC is accent only** — fails WCAG AA on white as text (~2.5:1). Use only as background, hover, focus ring, or paired with `text-sky-deep` (#1F6C9F) on `bg-sky-pale`.
+- **Color #3DA8FF is accent only** — fails WCAG AA on white as text (~2.8:1). Use only as background, hover, focus ring, or paired with `text-sky-deep` (#1F6C9F) on `bg-sky-pale`.
 - White canvas, `text-ink` (#0B0F14), `border-line` (#EAEAEA) hairlines. No heavy shadows; max one tier of `0 2px 8px rgba(0,0,0,0.04)` lift.
 - Typography mixes Geist sans (UI, body) with Newsreader serif italic (display emphasis). Mono is reserved for eyebrows, kbd, metadata.
 - All `<Reveal>`-wrapped sections must be staggered (`delay={i * 80}`) — never mount everything at once.

@@ -25,7 +25,7 @@
   <a href="https://www.typescriptlang.org"><img alt="TypeScript strict" src="https://img.shields.io/badge/TypeScript-strict-0B0F14.svg?logo=typescript&logoColor=3178C6"></a>
   <a href="https://bun.sh"><img alt="Bun 1.3" src="https://img.shields.io/badge/Bun-1.3-0B0F14.svg?logo=bun&logoColor=FBF0DF"></a>
   <a href="https://workers.cloudflare.com"><img alt="Cloudflare Workers" src="https://img.shields.io/badge/Cloudflare-Workers-0B0F14.svg?logo=cloudflare&logoColor=F38020"></a>
-  <a href="https://osmon.io"><img alt="Live" src="https://img.shields.io/badge/live-osmon.io-56B6FC.svg"></a>
+  <a href="https://osmon.io"><img alt="Live" src="https://img.shields.io/badge/live-osmon.io-3DA8FF.svg"></a>
 </p>
 
 <br>
@@ -109,7 +109,7 @@ Every route is statically generated. 16 prerendered pages at build time, includi
 
 ## Design rules
 
-- **`#56B6FC`** is accent only. Fails AA on white as text (~2.5:1). Used for ambient blur, hover, focus ring, pill background, or paired with `text-sky-deep` (#1F6C9F) on `bg-sky-pale`.
+- **`#3DA8FF`** is accent only. Fails AA on white as text (~2.8:1). Used for ambient blur, hover, focus ring, pill background, or paired with `text-sky-deep` (#1F6C9F) on `bg-sky-pale`.
 - White canvas, `text-ink` (#0B0F14), `border-line` (#EAEAEA) hairlines. Maximum one shadow tier (`0 2px 8px rgba(0,0,0,0.04)`).
 - Geist for UI and body. **Newsreader** italic for display emphasis. Mono is reserved for eyebrows, `<kbd>` chips, and metadata.
 - Every `<Reveal>`-wrapped block staggers via `delay={i * 80}`. No mass mounts.
