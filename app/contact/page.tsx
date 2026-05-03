@@ -174,7 +174,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="relative border-t border-line-soft py-20 md:py-32">
+      <section className="relative py-20 md:py-32">
         <div className="mx-auto max-w-(--container-wide) px-6 md:px-10">
           <div className="mb-12 grid gap-10 md:grid-cols-12">
             <Reveal className="md:col-span-4">

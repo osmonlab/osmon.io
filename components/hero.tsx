@@ -4,13 +4,34 @@ import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 export function Hero() {
   return (
     <section className="relative overflow-hidden pt-40 pb-32 md:pt-56 md:pb-48">
-      {/* ambient sky drift */}
+      {/* ambient sky wash — masked to a smooth circle so it never hits a hard edge */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10"
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          maskImage:
+            "radial-gradient(ellipse 70% 75% at 55% 45%, #000 0%, #000 35%, transparent 80%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse 70% 75% at 55% 45%, #000 0%, #000 35%, transparent 80%)",
+        }}
       >
-        <div className="osmon-drift absolute left-1/2 top-1/3 h-[60vw] w-[60vw] -translate-x-1/2 -translate-y-1/2 rounded-full bg-sky/[0.18] blur-[140px]" />
-        <div className="absolute inset-0 osmon-grid opacity-60 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
+        {/* primary halo — anchored slightly right of centre */}
+        <div
+          className="osmon-drift absolute left-[55%] top-[45%] h-[100vw] max-h-[1200px] w-[100vw] max-w-[1500px] -translate-x-1/2 -translate-y-1/2 rounded-full"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(61,168,255,0.45) 0%, rgba(61,168,255,0.22) 35%, rgba(61,168,255,0) 70%)",
+            filter: "blur(40px)",
+          }}
+        />
+        {/* secondary off-axis washes for asymmetry */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse 38% 32% at 22% 65%, rgba(61,168,255,0.22), transparent 65%), radial-gradient(ellipse 28% 22% at 82% 25%, rgba(61,168,255,0.20), transparent 60%)",
+          }}
+        />
       </div>
 
       <div className="mx-auto max-w-(--container-wide) px-6 md:px-10">

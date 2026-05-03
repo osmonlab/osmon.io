@@ -89,7 +89,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="relative border-t border-line-soft py-20 md:py-32">
+      <section className="relative py-20 md:py-32">
         <div className="mx-auto max-w-(--container-wide) px-6 md:px-10">
           <div className="mb-14 grid gap-10 md:grid-cols-12">
             <Reveal className="md:col-span-4">
@@ -122,7 +122,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="relative border-t border-line-soft py-20 md:py-32">
+      <section className="relative py-20 md:py-32">
         <div className="mx-auto grid max-w-(--container-wide) gap-16 px-6 md:grid-cols-12 md:px-10">
           <Reveal className="md:col-span-4">
             <p className="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-ink-muted">

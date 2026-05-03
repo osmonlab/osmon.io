@@ -16,7 +16,7 @@ const nav = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-line-soft py-12">
+    <footer className="py-12">
       <div className="mx-auto grid max-w-(--container-wide) gap-10 px-6 md:grid-cols-12 md:px-10">
         <div className="md:col-span-5 space-y-3">
           <Wordmark className="text-ink text-[1.15rem]" />

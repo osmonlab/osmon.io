@@ -5,9 +5,37 @@ export function Cta() {
   return (
     <section
       id="contact"
-      className="relative border-t border-line-soft py-24 md:py-40"
+      className="relative py-24 md:py-40"
     >
-      <div className="mx-auto max-w-(--container-wide) px-6 md:px-10">
+      {/* ambient sky wash — bleeds beyond the section into the footer; mask fades to transparent inside the viewport so no edges show */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 -top-[10%] -bottom-[20%] z-0"
+        style={{
+          maskImage:
+            "radial-gradient(ellipse 50% 55% at 45% 50%, #000 0%, #000 25%, transparent 75%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse 50% 55% at 45% 50%, #000 0%, #000 25%, transparent 75%)",
+        }}
+      >
+        <div
+          className="osmon-drift absolute left-[45%] top-[50%] h-[80vw] max-h-[900px] w-[80vw] max-w-[1100px] -translate-x-1/2 -translate-y-1/2 rounded-full"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(61,168,255,0.32) 0%, rgba(61,168,255,0.16) 35%, rgba(61,168,255,0) 70%)",
+            filter: "blur(40px)",
+          }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse 25% 22% at 70% 30%, rgba(61,168,255,0.14), transparent 60%)",
+          }}
+        />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-(--container-wide) px-6 md:px-10">
         <Reveal>
           <p className="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-ink-muted">
             Get in touch

@@ -54,7 +54,7 @@ export function Capabilities() {
   return (
     <section
       id="capabilities"
-      className="relative border-t border-line-soft py-24 md:py-40"
+      className="relative py-24 md:py-40"
     >
       <div className="mx-auto max-w-(--container-wide) px-6 md:px-10">
         <div className="mb-16 grid gap-10 md:grid-cols-12">

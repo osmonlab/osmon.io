@@ -4,7 +4,7 @@ export function Manifesto() {
   return (
     <section
       id="work"
-      className="relative border-t border-line-soft py-24 md:py-40"
+      className="relative py-24 md:py-40"
     >
       <div className="mx-auto grid max-w-(--container-wide) gap-16 px-6 md:grid-cols-12 md:px-10">
         <Reveal className="md:col-span-4">

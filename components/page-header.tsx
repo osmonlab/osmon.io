@@ -9,7 +9,7 @@ type PageHeaderProps = {
 
 export function PageHeader({ eyebrow, title, lede }: PageHeaderProps) {
   return (
-    <section className="relative overflow-hidden border-b border-line-soft pt-40 pb-24 md:pt-48 md:pb-32">
+    <section className="relative overflow-hidden pt-40 pb-24 md:pt-48 md:pb-32">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-10"
