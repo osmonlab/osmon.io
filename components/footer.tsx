@@ -4,7 +4,7 @@ import { Wordmark } from "@/components/wordmark";
 const social = [
   { href: "https://github.com/osmonlab", label: "GitHub" },
   { href: "https://x.com/osmonlab", label: "X" },
-  { href: "https://linkedin.com/company/osmonlab", label: "LinkedIn" },
+  { href: "https://linkedin.com/company/osmon/", label: "LinkedIn" },
 ];
 
 const nav = [
