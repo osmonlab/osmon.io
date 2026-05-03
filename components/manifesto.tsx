@@ -50,20 +50,27 @@ export function Manifesto() {
 
         <Reveal delay={360}>
           <dl className="grid grid-cols-2 gap-x-8 gap-y-8 border-t border-line-soft pt-10 text-left md:grid-cols-4">
-            {stats.map(([num, label, evidence]) => (
-              <div
-                key={label}
-                title={evidence}
-                className="cursor-help"
-              >
-                <dt className="font-serif text-[2rem] leading-none tracking-[-0.02em] text-ink">
-                  {num}
-                </dt>
-                <dd className="mt-2 text-[0.8125rem] leading-snug text-ink-muted">
-                  {label}
-                </dd>
-              </div>
-            ))}
+            {stats.map(([num, label, evidence]) => {
+              const evidenceId = `stat-evidence-${label.replace(/\s+/g, "-").toLowerCase()}`;
+              return (
+                <div
+                  key={label}
+                  title={evidence}
+                  aria-describedby={evidenceId}
+                  className="cursor-help"
+                >
+                  <dt className="font-serif text-[2rem] leading-none tracking-[-0.02em] text-ink">
+                    {num}
+                  </dt>
+                  <dd className="mt-2 text-[0.8125rem] leading-snug text-ink-muted">
+                    {label}
+                  </dd>
+                  <span id={evidenceId} className="sr-only">
+                    {evidence}
+                  </span>
+                </div>
+              );
+            })}
           </dl>
         </Reveal>
       </div>

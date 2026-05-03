@@ -67,6 +67,7 @@ export function CommandMenu({ open, onOpenChange }: Props) {
   const [activeIndex, setActiveIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
+  const triggerRef = useRef<HTMLElement | null>(null);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -84,11 +85,14 @@ export function CommandMenu({ open, onOpenChange }: Props) {
 
   useEffect(() => {
     if (!open) return;
+    triggerRef.current = (document.activeElement as HTMLElement | null) ?? null;
     const t = setTimeout(() => inputRef.current?.focus(), 10);
     document.body.style.overflow = "hidden";
     return () => {
       clearTimeout(t);
       document.body.style.overflow = "";
+      triggerRef.current?.focus?.();
+      triggerRef.current = null;
     };
   }, [open]);
 

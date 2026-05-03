@@ -64,7 +64,7 @@ export function Process() {
                   <span className="inline-flex items-center rounded-full bg-sky-pale px-2.5 py-1 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-sky-deep">
                     {p.marker}
                   </span>
-                  <span className="font-serif text-[1rem] italic leading-none text-ink-muted">
+                  <span aria-hidden className="font-serif text-[1rem] italic leading-none text-ink-muted">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                 </div>
