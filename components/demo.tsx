@@ -43,12 +43,12 @@ export function Demo() {
           </Reveal>
 
           <Reveal delay={120} className="md:col-span-8">
-            <div className="overflow-hidden rounded-2xl border border-line bg-ink shadow-[0_24px_60px_-24px_rgba(11,15,20,0.45),0_2px_0_rgba(11,15,20,0.06)]">
-              <div className="flex items-center gap-2 border-b border-white/5 px-4 py-3">
-                <span className="size-2.5 rounded-full bg-white/12" />
-                <span className="size-2.5 rounded-full bg-white/12" />
-                <span className="size-2.5 rounded-full bg-white/12" />
-                <span className="ml-3 font-mono text-[0.7rem] uppercase tracking-[0.16em] text-white/40">
+            <div className="overflow-hidden rounded-2xl border border-line bg-shell text-shell-text shadow-[0_24px_60px_-24px_rgba(11,15,20,0.45),0_2px_0_rgba(11,15,20,0.06)]">
+              <div className="flex items-center gap-2 border-b border-shell-text/10 px-4 py-3">
+                <span className="size-2.5 rounded-full bg-shell-text/12" />
+                <span className="size-2.5 rounded-full bg-shell-text/12" />
+                <span className="size-2.5 rounded-full bg-shell-text/12" />
+                <span className="ml-3 font-mono text-[0.7rem] uppercase tracking-[0.16em] text-shell-text/40">
                   agent · session 9f5a · LHR
                 </span>
               </div>
@@ -57,7 +57,7 @@ export function Demo() {
                 {lines.map((l, i) => {
                   if (l.kind === "prompt") {
                     return (
-                      <div key={i} className="flex gap-2 text-white/85">
+                      <div key={i} className="flex gap-2 text-shell-text/85">
                         <span className="text-sky">$</span>
                         <span>{l.text}</span>
                       </div>
@@ -65,7 +65,7 @@ export function Demo() {
                   }
                   if (l.kind === "out") {
                     return (
-                      <div key={i} className="pl-4 text-white/55">
+                      <div key={i} className="pl-4 text-shell-text/55">
                         {l.text}
                       </div>
                     );
@@ -82,21 +82,21 @@ export function Demo() {
                               ? "mt-0.5 shrink-0 text-emerald-400"
                               : l.status === "running"
                               ? "mt-0.5 shrink-0 animate-spin text-sky"
-                              : "mt-0.5 shrink-0 text-white/30"
+                              : "mt-0.5 shrink-0 text-shell-text/30"
                           }
                         />
                         <div className="flex-1 space-y-1">
                           <div
                             className={
                               l.status === "queued"
-                                ? "text-white/40"
-                                : "text-white/85"
+                                ? "text-shell-text/40"
+                                : "text-shell-text/85"
                             }
                           >
                             {l.text}
                           </div>
                           {l.detail ? (
-                            <div className="text-[0.75rem] text-white/45">
+                            <div className="text-[0.75rem] text-shell-text/45">
                               {l.detail}
                             </div>
                           ) : null}
@@ -107,7 +107,7 @@ export function Demo() {
                   return (
                     <div
                       key={i}
-                      className="mt-4 flex items-center gap-3 border-t border-white/5 pt-4 text-white/70"
+                      className="mt-4 flex items-center gap-3 border-t border-shell-text/10 pt-4 text-shell-text/70"
                     >
                       <span className="inline-flex items-center rounded-full bg-emerald-500/14 px-2.5 py-0.5 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-emerald-300">
                         review ready
