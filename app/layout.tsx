@@ -81,7 +81,7 @@ const orgSchema = {
       sameAs: [
         "https://github.com/osmonlab",
         "https://x.com/osmonlab",
-        "https://linkedin.com/company/osmonlab",
+        "https://linkedin.com/company/osmon/",
       ],
       address: {
         "@type": "PostalAddress",
