@@ -73,8 +73,10 @@ export function Footer() {
       </div>
 
       <div className="mx-auto mt-12 flex max-w-(--container-wide) flex-col gap-3 border-t border-line-soft px-6 pt-6 text-[0.75rem] text-ink-muted md:flex-row md:items-center md:justify-between md:px-10">
-        <span>© {new Date().getFullYear()} osmon lab. All rights reserved.</span>
-        <span className="font-mono">v0.1 — under construction</span>
+        <span className="font-serif text-[0.9375rem] italic leading-snug">
+          Made under an open sky in Tashkent.
+        </span>
+        <span className="font-mono">© {new Date().getFullYear()} osmon lab</span>
       </div>
     </footer>
   );

@@ -59,10 +59,10 @@ export function Hero() {
         </Reveal>
 
         <Reveal delay={360}>
-          <div className="mt-12 flex flex-wrap items-center gap-4">
+          <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-5">
             <a
               href="mailto:hello@osmon.io"
-              className="group inline-flex h-12 items-center gap-2 rounded-md bg-ink px-6 text-[0.9375rem] font-medium text-canvas transition-colors hover:bg-ink-soft active:scale-[0.98]"
+              className="group inline-flex h-13 items-center gap-2 rounded-full bg-ink px-7 text-[0.9375rem] font-medium text-canvas shadow-[0_2px_0_rgba(11,15,20,0.06),0_8px_28px_-12px_rgba(11,15,20,0.35)] transition-colors hover:bg-ink-soft active:scale-[0.98]"
             >
               Start a conversation
               <ArrowUpRight
@@ -72,10 +72,11 @@ export function Hero() {
               />
             </a>
             <a
-              href="#capabilities"
-              className="inline-flex h-12 items-center gap-2 rounded-md border border-line px-6 text-[0.9375rem] font-medium text-ink transition-colors hover:border-ink/40"
+              href="#process"
+              className="group inline-flex items-center gap-1.5 text-[0.9375rem] font-medium text-ink-soft underline decoration-line decoration-1 underline-offset-[6px] transition-[color,text-decoration-color] hover:text-ink hover:decoration-ink"
             >
               See what we build
+              <span aria-hidden className="transition-transform group-hover:translate-x-0.5">→</span>
             </a>
           </div>
         </Reveal>

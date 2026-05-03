@@ -17,6 +17,16 @@ export function Reveal({ children, delay = 0, className, as = "div" }: RevealPro
   useEffect(() => {
     const node = ref.current;
     if (!node) return;
+
+    // Respect reduced-motion: render visible immediately, no animation.
+    const reduced =
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) {
+      setVisible(true);
+      return;
+    }
+
     if (typeof IntersectionObserver === "undefined") {
       setVisible(true);
       return;

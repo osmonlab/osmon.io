@@ -38,7 +38,7 @@ export function Cta() {
       <div className="relative z-10 mx-auto max-w-(--container-wide) px-6 md:px-10">
         <Reveal>
           <p className="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-ink-muted">
-            Get in touch
+            07 — Get in touch
           </p>
         </Reveal>
 

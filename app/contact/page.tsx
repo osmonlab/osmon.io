@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/page-header";
 import { Reveal } from "@/components/reveal";
-import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
+import { ArrowUpRight, EnvelopeSimple } from "@phosphor-icons/react/dist/ssr";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -14,27 +14,37 @@ const channels = [
     label: "General",
     handle: "hello@osmon.io",
     href: "mailto:hello@osmon.io",
-    body: "For new engagements, partnerships, and anything that doesn't fit the buckets below.",
+    body:
+      "For new engagements, partnerships, and anything that doesn&rsquo;t fit the buckets below.",
   },
   {
     label: "Engineering",
     handle: "build@osmon.io",
     href: "mailto:build@osmon.io",
-    body: "Going deep on a technical question, an integration, or a working session — start here.",
+    body:
+      "Going deep on a technical question, an integration, or a working session — start here.",
   },
   {
-    label: "Press & speaking",
+    label: "Press &amp; speaking",
     handle: "press@osmon.io",
     href: "mailto:press@osmon.io",
-    body: "Interviews, podcasts, conference invitations, and student outreach.",
+    body:
+      "Interviews, podcasts, conference invitations, and student outreach.",
   },
 ];
 
 const fitChecks = [
-  "You have a real product and real users — or you're days away from both.",
+  "You have a real product and real users — or you&rsquo;re days away from both.",
   "An agent is a means to an outcome, not the outcome itself.",
   "You can write the eval that decides whether the system works.",
-  "You're allergic to demo-ware.",
+  "You&rsquo;re allergic to demo-ware.",
+];
+
+const briefHints = [
+  "What you&rsquo;re trying to ship — one paragraph",
+  "Who it&rsquo;s for, and how you&rsquo;ll know it works",
+  "Where it sits in your stack today",
+  "When you&rsquo;d ideally start",
 ];
 
 export default function ContactPage() {
@@ -60,11 +70,12 @@ export default function ContactPage() {
                   Direct
                 </p>
                 <h2 className="mt-3 font-serif text-[clamp(1.5rem,3vw,2.25rem)] leading-tight tracking-[-0.015em] text-ink">
-                  Email is faster than the form.
+                  Email lands faster than any form.
                 </h2>
                 <p className="mt-4 max-w-md text-[1rem] leading-[1.65] text-ink-muted">
-                  We read everything that lands in these inboxes. No filters,
-                  no autoresponders, no &ldquo;your case has been opened.&rdquo;
+                  We read every message that lands in these inboxes. No
+                  filters, no autoresponders, no &ldquo;your case has been
+                  opened.&rdquo;
                 </p>
               </div>
 
@@ -75,16 +86,18 @@ export default function ContactPage() {
                       href={c.href}
                       className="block space-y-1 transition-colors"
                     >
-                      <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-ink-muted">
-                        {c.label}
-                      </p>
+                      <p
+                        className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-ink-muted"
+                        dangerouslySetInnerHTML={{ __html: c.label }}
+                      />
                       <p className="flex items-center gap-2 font-mono text-[1rem] text-ink underline decoration-line underline-offset-[5px] group-hover:decoration-sky group-hover:text-sky-deep">
                         {c.handle}
                         <ArrowUpRight size={14} weight="bold" />
                       </p>
-                      <p className="max-w-sm text-[0.9375rem] leading-[1.6] text-ink-muted">
-                        {c.body}
-                      </p>
+                      <p
+                        className="max-w-sm text-[0.9375rem] leading-[1.6] text-ink-muted"
+                        dangerouslySetInnerHTML={{ __html: c.body }}
+                      />
                     </a>
                   </li>
                 ))}
@@ -93,83 +106,49 @@ export default function ContactPage() {
           </Reveal>
 
           <Reveal delay={120} className="md:col-span-7">
-            <form
-              className="space-y-8 rounded-xl border border-line bg-canvas p-8 md:p-10"
-              action="mailto:hello@osmon.io"
-              method="post"
-              encType="text/plain"
-            >
-              <div>
-                <p className="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-ink-muted">
-                  Or write here
-                </p>
-                <h2 className="mt-3 font-serif text-[clamp(1.5rem,3vw,2rem)] leading-tight tracking-[-0.015em] text-ink">
-                  A short message lands the same place.
-                </h2>
-              </div>
-
-              <Field label="Your name" name="name" placeholder="Lena Asanova" />
-              <Field
-                label="Email"
-                name="email"
-                type="email"
-                placeholder="lena@company.com"
-                required
-              />
-              <Field
-                label="Company"
-                name="company"
-                placeholder="Northwind Robotics"
-              />
-
-              <div className="space-y-2">
-                <label
-                  htmlFor="scope"
-                  className="block font-mono text-[0.72rem] uppercase tracking-[0.16em] text-ink-muted"
-                >
-                  What are you trying to ship?
-                </label>
-                <textarea
-                  id="scope"
-                  name="scope"
-                  rows={5}
-                  required
-                  placeholder="One paragraph is enough. Skip the NDA dance."
-                  className="w-full rounded-md border border-line bg-canvas px-4 py-3 text-[0.9375rem] leading-relaxed text-ink placeholder:text-ink-muted/60 focus:border-sky focus:outline-none"
-                />
-              </div>
-
-              <div className="space-y-3 border-t border-line-soft pt-6">
-                <label className="flex cursor-pointer items-start gap-3">
-                  <input
-                    type="checkbox"
-                    name="exploration"
-                    className="mt-1 size-4 cursor-pointer accent-[var(--color-sky-deep)]"
-                  />
-                  <span className="text-[0.9375rem] leading-relaxed text-ink-soft">
-                    I&rsquo;m exploring — a thirty-minute call before either of us
-                    commits is fine.
-                  </span>
-                </label>
-              </div>
-
-              <button
-                type="submit"
-                className="group inline-flex h-12 items-center gap-2 rounded-md bg-ink px-6 text-[0.9375rem] font-medium text-canvas transition-colors hover:bg-ink-soft active:scale-[0.98]"
-              >
-                Send the brief
-                <ArrowUpRight
-                  size={16}
-                  weight="bold"
-                  className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                />
-              </button>
-
-              <p className="text-[0.75rem] leading-relaxed text-ink-muted">
-                We don&rsquo;t track the form. Submissions arrive as a plain
-                email; we never sync this anywhere.
+            <div className="rounded-xl border border-line bg-canvas p-8 md:p-10">
+              <p className="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-ink-muted">
+                What to write
               </p>
-            </form>
+              <h2 className="mt-3 font-serif text-[clamp(1.5rem,3vw,2rem)] leading-tight tracking-[-0.015em] text-ink">
+                A short message wins over a long form.
+              </h2>
+              <p className="mt-4 text-[1rem] leading-[1.65] text-ink-muted">
+                Skip the NDA dance and the templated brief. A paragraph that
+                covers these four things is enough to know if there&rsquo;s a
+                fit.
+              </p>
+
+              <ol className="mt-8 space-y-3 border-t border-line-soft pt-6">
+                {briefHints.map((b, i) => (
+                  <li key={b} className="flex items-start gap-4">
+                    <span className="font-mono text-[0.72rem] uppercase tracking-[0.14em] text-ink-muted">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span
+                      className="text-[0.9375rem] leading-[1.6] text-ink-soft"
+                      dangerouslySetInnerHTML={{ __html: b }}
+                    />
+                  </li>
+                ))}
+              </ol>
+
+              <a
+                href="mailto:hello@osmon.io?subject=osmon%20—%20new%20brief&body=Hi%20osmon%2C%0A%0A1.%20What%20we%E2%80%99re%20shipping%3A%0A%0A2.%20Who%20it%E2%80%99s%20for%2C%20how%20we%E2%80%99ll%20know%20it%20works%3A%0A%0A3.%20Where%20it%20sits%20in%20our%20stack%20today%3A%0A%0A4.%20Ideal%20start%3A%0A%0AThanks%2C%0A"
+                className="group mt-10 inline-flex h-12 items-center gap-2 rounded-full bg-ink pl-5 pr-3 text-[0.9375rem] font-medium text-canvas shadow-[0_2px_0_rgba(11,15,20,0.06),0_8px_28px_-12px_rgba(11,15,20,0.35)] transition-colors hover:bg-ink-soft active:scale-[0.98]"
+              >
+                <EnvelopeSimple size={16} weight="bold" />
+                Open a draft to hello@osmon.io
+                <span className="inline-flex size-7 items-center justify-center rounded-full bg-canvas/12 transition-colors group-hover:bg-canvas/20">
+                  <ArrowUpRight size={12} weight="bold" />
+                </span>
+              </a>
+
+              <p className="mt-5 text-[0.75rem] leading-relaxed text-ink-muted">
+                Opens your default mail client with the prompts pre-filled.
+                Edit and send.
+              </p>
+            </div>
           </Reveal>
         </div>
       </section>
@@ -194,47 +173,15 @@ export default function ContactPage() {
                 <p className="font-mono text-[0.72rem] tracking-[0.16em] text-ink-muted">
                   {String(i + 1).padStart(2, "0")}
                 </p>
-                <p className="mt-4 text-[1rem] leading-[1.6] text-ink-soft">
-                  {c}
-                </p>
+                <p
+                  className="mt-4 text-[1rem] leading-[1.6] text-ink-soft"
+                  dangerouslySetInnerHTML={{ __html: c }}
+                />
               </Reveal>
             ))}
           </ul>
         </div>
       </section>
     </>
-  );
-}
-
-function Field({
-  label,
-  name,
-  type = "text",
-  placeholder,
-  required,
-}: {
-  label: string;
-  name: string;
-  type?: string;
-  placeholder?: string;
-  required?: boolean;
-}) {
-  return (
-    <div className="space-y-2">
-      <label
-        htmlFor={name}
-        className="block font-mono text-[0.72rem] uppercase tracking-[0.16em] text-ink-muted"
-      >
-        {label}
-      </label>
-      <input
-        id={name}
-        name={name}
-        type={type}
-        placeholder={placeholder}
-        required={required}
-        className="w-full rounded-md border border-line bg-canvas px-4 py-3 text-[0.9375rem] text-ink placeholder:text-ink-muted/60 focus:border-sky focus:outline-none"
-      />
-    </div>
   );
 }

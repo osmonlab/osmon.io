@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ArrowUpRight, MagnifyingGlass } from "@phosphor-icons/react/dist/ssr";
+import { ArrowUpRight, List, MagnifyingGlass } from "@phosphor-icons/react/dist/ssr";
 import { Wordmark } from "@/components/wordmark";
 import { CommandMenu } from "@/components/command-menu";
 import { cn } from "@/lib/cn";
@@ -103,6 +103,7 @@ export function Nav() {
           </nav>
 
           <div className="flex items-center gap-2">
+            {/* Search trigger: tablet+ shows label + kbd hint */}
             <button
               type="button"
               onClick={() => setMenuOpen(true)}
@@ -115,6 +116,16 @@ export function Nav() {
               <kbd className="inline-flex h-6 items-center gap-0.5 rounded-full bg-bone px-2 font-mono text-[0.65rem] text-ink-soft">
                 <span aria-hidden>⌘</span>K
               </kbd>
+            </button>
+
+            {/* Mobile menu: opens the same command palette (already lists every route) */}
+            <button
+              type="button"
+              onClick={() => setMenuOpen(true)}
+              aria-label="Open menu"
+              className="inline-flex md:hidden size-9 items-center justify-center rounded-full border border-line-soft bg-canvas/70 text-ink transition-colors hover:border-line"
+            >
+              <List size={16} weight="bold" />
             </button>
 
             <Link

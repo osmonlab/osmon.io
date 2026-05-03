@@ -114,6 +114,23 @@ export function CommandMenu({ open, onOpenChange }: Props) {
       } else if (e.key === "Escape") {
         e.preventDefault();
         close();
+      } else if (e.key === "Tab") {
+        // Trap focus inside the dialog.
+        const root = e.currentTarget;
+        const focusables = root.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        );
+        if (focusables.length === 0) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        const active = document.activeElement as HTMLElement | null;
+        if (e.shiftKey && (active === first || !root.contains(active))) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && active === last) {
+          e.preventDefault();
+          first.focus();
+        }
       }
     },
     [filtered, activeIndex, select, close],

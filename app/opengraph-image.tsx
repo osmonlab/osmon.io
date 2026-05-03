@@ -4,7 +4,23 @@ export const alt = "osmon — software, written by software";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function OG() {
+// Pull TTF URLs from Google Fonts (UA trick gets TTF instead of woff2,
+// which @vercel/og's satori needs). Cached by the platform after first hit.
+async function loadFont(weight: 400 | 600): Promise<ArrayBuffer> {
+  const css = await fetch(`https://fonts.googleapis.com/css?family=Inter:${weight}`, {
+    headers: { "User-Agent": "Mozilla/4.0" },
+    cache: "force-cache",
+  }).then((r) => r.text());
+  const url = css.match(/src: url\((https:\/\/[^)]+\.ttf)\)/)?.[1];
+  if (!url) throw new Error("could not locate Inter TTF url in CSS");
+  const r = await fetch(url, { cache: "force-cache" });
+  if (!r.ok) throw new Error(`font fetch failed: ${url}`);
+  return r.arrayBuffer();
+}
+
+export default async function OG() {
+  const [regular, semibold] = await Promise.all([loadFont(400), loadFont(600)]);
+
   return new ImageResponse(
     (
       <div
@@ -17,7 +33,7 @@ export default function OG() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: 80,
-          fontFamily: "system-ui, -apple-system, Helvetica",
+          fontFamily: "Inter",
           backgroundImage:
             "radial-gradient(ellipse 60% 40% at 80% 0%, rgba(61,168,255,0.18), transparent 60%)",
         }}
@@ -27,7 +43,7 @@ export default function OG() {
             display: "flex",
             alignItems: "center",
             fontSize: 28,
-            fontWeight: 500,
+            fontWeight: 600,
             letterSpacing: "-0.04em",
           }}
         >
@@ -43,7 +59,7 @@ export default function OG() {
           <div
             style={{
               fontSize: 24,
-              fontFamily: "ui-monospace, Menlo, monospace",
+              fontFamily: "Inter",
               letterSpacing: "0.18em",
               textTransform: "uppercase",
               color: "#6b7280",
@@ -54,7 +70,7 @@ export default function OG() {
           <div
             style={{
               fontSize: 96,
-              fontWeight: 500,
+              fontWeight: 600,
               letterSpacing: "-0.035em",
               lineHeight: 1.02,
               maxWidth: 980,
@@ -76,6 +92,12 @@ export default function OG() {
         </div>
       </div>
     ),
-    { ...size },
+    {
+      ...size,
+      fonts: [
+        { name: "Inter", data: regular, weight: 400, style: "normal" },
+        { name: "Inter", data: semibold, weight: 600, style: "normal" },
+      ],
+    },
   );
 }
