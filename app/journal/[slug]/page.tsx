@@ -232,6 +232,7 @@ export async function generateMetadata({
       description: article.dek,
       type: "article",
       publishedTime: article.date,
+      url: `https://osmon.io/journal/${slug}`,
       images: [
         {
           url: "/opengraph-image",
@@ -246,7 +247,6 @@ export async function generateMetadata({
       title: article.title,
       description: article.dek,
       images: ["/opengraph-image"],
-      url: `https://osmon.io/journal/${slug}`,
     },
   };
 }
