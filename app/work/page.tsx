@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Work",
   description:
     "A small portfolio of agentic systems osmon has shipped — production agents, orchestration layers, and the surfaces around them.",
+  alternates: { canonical: "/work" },
 };
 
 type Project = {

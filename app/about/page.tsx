@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "About",
   description:
     "osmon is a small studio of engineers building agentic software for production. Tashkent · Remote.",
+  alternates: { canonical: "/about" },
 };
 
 const principles = [

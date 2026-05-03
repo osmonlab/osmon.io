@@ -218,15 +218,21 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const article = articles[slug];
-  if (!article) return { title: "Journal" };
+  if (!article)
+    return {
+      title: "Journal",
+      alternates: { canonical: `/journal/${slug}` },
+    };
   return {
     title: article.title,
     description: article.dek,
+    alternates: { canonical: `/journal/${slug}` },
     openGraph: {
       title: article.title,
       description: article.dek,
       type: "article",
       publishedTime: article.date,
+      url: `https://osmon.io/journal/${slug}`,
     },
   };
 }
@@ -252,8 +258,58 @@ export default async function JournalEntry({
     notFound();
   }
 
+  const url = `https://osmon.io/journal/${slug}`;
+  const cleanDek = article.dek.replace(/&[a-z]+;/g, "'");
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "@id": `${url}#post`,
+        headline: article.title,
+        description: cleanDek,
+        datePublished: article.date,
+        dateModified: article.date,
+        url,
+        mainEntityOfPage: url,
+        inLanguage: "en",
+        keywords: article.topic,
+        author: { "@id": "https://osmon.io/#org" },
+        publisher: { "@id": "https://osmon.io/#org" },
+        image: "https://osmon.io/opengraph-image",
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://osmon.io",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Journal",
+            item: "https://osmon.io/journal",
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: article.title,
+            item: url,
+          },
+        ],
+      },
+    ],
+  };
+
   return (
     <article className="relative pt-40 pb-32 md:pt-48 md:pb-40">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
       <div
         aria-hidden
         className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[40vh]"
