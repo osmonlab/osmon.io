@@ -33,6 +33,7 @@ export const metadata: Metadata = {
   description:
     "osmon is a studio building agentic software for engineering teams. Sky-high ceiling, ground-level execution.",
   applicationName: "osmon",
+  alternates: { canonical: "/" },
   keywords: [
     "agentic software",
     "AI engineering",
@@ -60,10 +61,45 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "osmon",
+    title: "osmon — software, written by software",
     description: "A studio building agentic software for engineering teams.",
   },
   robots: { index: true, follow: true },
+};
+
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://osmon.io/#org",
+      name: "osmon",
+      alternateName: "osmon lab",
+      url: "https://osmon.io",
+      email: "hello@osmon.io",
+      logo: "https://osmon.io/icon",
+      sameAs: [
+        "https://github.com/osmonlab",
+        "https://x.com/osmonlab",
+        "https://linkedin.com/company/osmon/",
+      ],
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Tashkent",
+        addressCountry: "UZ",
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://osmon.io/#site",
+      url: "https://osmon.io",
+      name: "osmon",
+      description:
+        "A studio building agentic software for engineering teams.",
+      publisher: { "@id": "https://osmon.io/#org" },
+      inLanguage: "en",
+    },
+  ],
 };
 
 export const viewport: Viewport = {
@@ -91,6 +127,10 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+        />
       </body>
     </html>
   );

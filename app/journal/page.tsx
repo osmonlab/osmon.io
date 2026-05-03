@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Journal",
   description:
     "Field notes from osmon — short writing on agentic software, evals, and the working practice of shipping models in production.",
+  alternates: { canonical: "/journal" },
 };
 
 export default function JournalPage() {

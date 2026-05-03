@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Contact",
   description:
     "Tell us what you're trying to ship. We respond within two working days.",
+  alternates: { canonical: "/contact" },
 };
 
 const channels = [
