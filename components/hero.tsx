@@ -4,21 +4,13 @@ import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 export function Hero() {
   return (
     <section className="relative overflow-hidden pt-40 pb-32 md:pt-56 md:pb-48">
-      {/* ambient sky wash */}
+      {/* ambient sky drift */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-10"
       >
-        {/* primary drifting halo — anchored slightly right of centre to leave room for the headline */}
-        <div className="osmon-drift absolute left-[58%] top-[48%] h-[95vw] max-h-[1100px] w-[95vw] max-w-[1400px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-sky/[0.28] blur-[180px]" />
-        {/* secondary static washes — break the perfect symmetry */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(ellipse 30% 25% at 28% 62%, rgba(61,168,255,0.18), transparent 65%), radial-gradient(ellipse 22% 18% at 78% 28%, rgba(61,168,255,0.16), transparent 60%)",
-          }}
-        />
+        <div className="osmon-drift absolute left-1/2 top-1/3 h-[60vw] w-[60vw] -translate-x-1/2 -translate-y-1/2 rounded-full bg-sky/[0.18] blur-[140px]" />
+        <div className="absolute inset-0 osmon-grid opacity-60 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
       </div>
 
       <div className="mx-auto max-w-(--container-wide) px-6 md:px-10">
