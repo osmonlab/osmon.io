@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-canvas: #ffffff;
   --color-ink: #0b0f14;
@@ -12,6 +14,12 @@
   --color-sky-pale: #e1f3fe;
   --color-bone: #f7f6f3;
 
+  /* Mode-invariant surfaces (terminal card, modal scrim).
+     The dark block below tunes shell/overlay for dark mode. */
+  --color-shell: #0b0f14;
+  --color-shell-text: #ffffff;
+  --color-overlay: rgba(11, 15, 20, 0.30);
+
   --font-sans:
     var(--font-geist-sans), "SF Pro Display", "Helvetica Neue", system-ui,
     sans-serif;
@@ -22,6 +30,28 @@
 
   --container-narrow: 64rem;
   --container-wide: 80rem;
+}
+
+:root {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+
+  --color-canvas: #0b1015;
+  --color-ink: #ecf0f6;
+  --color-ink-soft: #c2c8d0;
+  --color-ink-muted: #8a93a0;
+  --color-line: #1f2531;
+  --color-line-soft: rgba(236, 240, 246, 0.08);
+  --color-sky-deep: #7bc2ff;
+  --color-sky-pale: rgba(61, 168, 255, 0.14);
+  --color-bone: #131820;
+
+  /* Slightly deeper than canvas so the terminal card lifts from the page. */
+  --color-shell: #06090d;
+  --color-overlay: rgba(0, 0, 0, 0.65);
 }
 
 @layer base {
