@@ -21,6 +21,7 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import type { Icon } from "@phosphor-icons/react";
 import { cn } from "@/lib/cn";
+import { journalEntries } from "@/lib/journal";
 
 export type CommandItem = {
   id: string;
@@ -32,22 +33,28 @@ export type CommandItem = {
   external?: boolean;
 };
 
-const items: CommandItem[] = [
+const pageItems: CommandItem[] = [
   { id: "home", label: "Home", group: "Pages", href: "/", icon: House },
   { id: "work", label: "Work", group: "Pages", href: "/work", icon: Briefcase, hint: "Selected case studies" },
   { id: "about", label: "About", group: "Pages", href: "/about", icon: UsersThree, hint: "Studio & principles" },
   { id: "journal", label: "Journal", group: "Pages", href: "/journal", icon: Newspaper, hint: "Working notes" },
   { id: "contact", label: "Contact", group: "Pages", href: "/contact", icon: EnvelopeSimple },
+];
 
-  { id: "j-thinnest", label: "The thinnest layer between people and the model", group: "Journal", href: "/journal/the-thinnest-layer", icon: Newspaper },
-  { id: "j-evals", label: "The eval suite is the spec, not the test", group: "Journal", href: "/journal/evals-are-the-spec", icon: Newspaper },
-  { id: "j-oncall", label: "What it looks like to put an agent on call", group: "Journal", href: "/journal/agents-on-call", icon: Newspaper },
-  { id: "j-tools", label: "Writing tools the model actually uses", group: "Journal", href: "/journal/writing-tools-the-model-actually-uses", icon: Newspaper },
-  { id: "j-ceilings", label: "Ceilings", group: "Journal", href: "/journal/ceilings", icon: Newspaper },
-
+const directItems: CommandItem[] = [
   { id: "email", label: "Email hello@osmon.io", group: "Direct", href: "mailto:hello@osmon.io", icon: EnvelopeSimple, external: true },
   { id: "github", label: "GitHub — osmonlab", group: "Direct", href: "https://github.com/osmonlab", icon: ArrowUpRight, external: true },
 ];
+
+const journalItems: CommandItem[] = journalEntries.map((entry) => ({
+  id: `journal-${entry.slug}`,
+  label: entry.title,
+  group: "Journal",
+  href: `/journal/${entry.slug}`,
+  icon: Newspaper,
+}));
+
+const items: CommandItem[] = [...pageItems, ...journalItems, ...directItems];
 
 type Props = {
   open: boolean;
@@ -60,6 +67,7 @@ export function CommandMenu({ open, onOpenChange }: Props) {
   const [activeIndex, setActiveIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
+  const triggerRef = useRef<HTMLElement | null>(null);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -77,11 +85,14 @@ export function CommandMenu({ open, onOpenChange }: Props) {
 
   useEffect(() => {
     if (!open) return;
+    triggerRef.current = (document.activeElement as HTMLElement | null) ?? null;
     const t = setTimeout(() => inputRef.current?.focus(), 10);
     document.body.style.overflow = "hidden";
     return () => {
       clearTimeout(t);
       document.body.style.overflow = "";
+      triggerRef.current?.focus?.();
+      triggerRef.current = null;
     };
   }, [open]);
 

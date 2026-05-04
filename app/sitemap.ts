@@ -1,14 +1,7 @@
 import type { MetadataRoute } from "next";
+import { journalEntries } from "@/lib/journal";
 
 const base = "https://osmon.io";
-
-const journalSlugs = [
-  "the-thinnest-layer",
-  "evals-are-the-spec",
-  "agents-on-call",
-  "writing-tools-the-model-actually-uses",
-  "ceilings",
-];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -20,9 +13,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: path === "" ? 1 : 0.7,
     })),
-    ...journalSlugs.map((slug) => ({
-      url: `${base}/journal/${slug}`,
-      lastModified: now,
+    ...journalEntries.map((entry) => ({
+      url: `${base}/journal/${entry.slug}`,
+      lastModified: new Date(entry.date),
       changeFrequency: "yearly" as const,
       priority: 0.5,
     })),

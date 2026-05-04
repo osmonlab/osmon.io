@@ -63,6 +63,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "osmon — software, written by software",
     description: "A studio building agentic software for engineering teams.",
+    images: ["/opengraph-image"],
   },
   robots: { index: true, follow: true },
 };
