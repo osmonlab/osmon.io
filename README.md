@@ -26,6 +26,7 @@
   <a href="https://bun.sh"><img alt="Bun 1.3" src="https://img.shields.io/badge/Bun-1.3-0B0F14.svg?logo=bun&logoColor=FBF0DF"></a>
   <a href="https://workers.cloudflare.com"><img alt="Cloudflare Workers" src="https://img.shields.io/badge/Cloudflare-Workers-0B0F14.svg?logo=cloudflare&logoColor=F38020"></a>
   <a href="https://osmon.io"><img alt="Live" src="https://img.shields.io/badge/live-osmon.io-3DA8FF.svg"></a>
+  <a href="https://github.com/osmonlab/osmon.io/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/osmonlab/osmon.io/actions/workflows/ci.yml/badge.svg?branch=main"></a>
 </p>
 
 <br>
