@@ -176,7 +176,7 @@ export function CommandMenu({ open, onOpenChange }: Props) {
         aria-hidden
         tabIndex={-1}
         onClick={close}
-        className="absolute inset-0 cursor-default bg-ink/30 backdrop-blur-md animate-[osmon-fade_180ms_ease-out]"
+        className="absolute inset-0 cursor-default bg-overlay backdrop-blur-md animate-[osmon-fade_180ms_ease-out]"
       />
       <div className="relative w-full max-w-xl overflow-hidden rounded-2xl border border-line bg-canvas shadow-[0_24px_60px_-20px_rgba(11,15,20,0.25),0_2px_0_rgba(11,15,20,0.04)] animate-[osmon-pop_220ms_cubic-bezier(0.16,1,0.3,1)]">
         <div className="flex items-center gap-3 border-b border-line-soft px-5 py-4">

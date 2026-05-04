@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Newsreader } from "next/font/google";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
+import { themePrePaintScript } from "@/lib/theme";
 import "./globals.css";
 
 const sans = Geist({
@@ -104,7 +105,10 @@ const orgSchema = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#ffffff",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0b1015" },
+  ],
   width: "device-width",
   initialScale: 1,
 };
@@ -115,7 +119,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${sans.variable} ${mono.variable} ${serif.variable}`}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${sans.variable} ${mono.variable} ${serif.variable}`}
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themePrePaintScript }} />
+      </head>
       <body className="min-h-screen bg-canvas text-ink">
         <a
           href="#main"

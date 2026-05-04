@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { ArrowUpRight, List, MagnifyingGlass } from "@phosphor-icons/react/dist/ssr";
 import { Wordmark } from "@/components/wordmark";
 import { CommandMenu } from "@/components/command-menu";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/cn";
 
 const links = [
@@ -117,6 +118,8 @@ export function Nav() {
                 <span aria-hidden>⌘</span>K
               </kbd>
             </button>
+
+            <ThemeToggle />
 
             {/* Mobile menu: opens the same command palette (already lists every route) */}
             <button
